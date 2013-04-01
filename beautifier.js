@@ -84,19 +84,16 @@ var cssbeautifier = function(rawcss) {
 var cssunbeautifier = function(rawcss) {
    'use strict';
     var a = rawcss.split(''), s=[];
+    for (var i = 0; i < a.length; i++) 
+        " " === a[i] && 
+        (" " === a[i - 1] || ";" === a[i - 1] || ":" === a[i - 1] || "{" === a[i - 1] || "}" === a[i - 1]) 
 
-    for(var i=0; i<a.length; i++){
-        //forward space
-        if(  (a[i]===' ') && 
-             ( (a[i-1]===' ') || (a[i-1]===';') || (a[i-1]===':') || 
-               (a[i-1]==='{') || (a[i-1]==='}') )  ) continue;
+        || 
 
-        if(  (a[i]===' ') && 
-             ( (a[i+1]===' ') || (a[i+1]===';') || (a[i+1]===':') || 
-               (a[i+1]==='{') || (a[i+1]==='}') )  ) continue;
-               
-        s.push(a[i]);
-    }
+        " " === a[i] && 
+        (" " === a[i + 1] || ";" === a[i + 1] || ":" === a[i + 1] || "{" === a[i + 1] || "}" === a[i + 1]) 
+        
+        || s.push(a[i]);
 
    return( s.join('') );
 };
