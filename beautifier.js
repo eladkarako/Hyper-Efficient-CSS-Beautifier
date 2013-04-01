@@ -80,18 +80,25 @@ var cssbeautifier = function(rawcss) {
 
 };
 
+
 var cssunbeautifier = function(rawcss) {
-  'use strict';
-   var s = rawcss;
+   'use strict';
+    var a = rawcss.split(''), s=[];
 
-   s = s.replace(/\n/ig,'');
-   s = s.replace(/\s*:\s*/ig,':');
-   s = s.replace(/\s*\,\s*/ig,',');
-   s = s.replace(/\s*\{\s*/ig,'{');
-   s = s.replace(/\s*\}\s*/ig,'}');
-   s = s.replace(/\s*\;\s*/ig,';');
+    for(var i=0; i<a.length; i++){
+        //forward space
+        if(  (a[i]===' ') && 
+             ( (a[i-1]===' ') || (a[i-1]===';') || (a[i-1]===':') || 
+               (a[i-1]==='{') || (a[i-1]==='}') )  ) continue;
 
-  return( s );
+        if(  (a[i]===' ') && 
+             ( (a[i+1]===' ') || (a[i+1]===';') || (a[i+1]===':') || 
+               (a[i+1]==='{') || (a[i+1]==='}') )  ) continue;
+               
+        s.push(a[i]);
+    }
+
+   return( s.join('') );
 };
 
 
