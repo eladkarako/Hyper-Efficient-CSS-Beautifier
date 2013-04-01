@@ -84,12 +84,14 @@ var cssbeautifier = function(rawcss) {
 var cssunbeautifier = function(rawcss) {
    'use strict';
     var a = rawcss.split(''), s=[];
-    for (var i = 0; i < a.length; i++) 
+    for (var i = 0; i < a.length; i++)
+        "\n" === a[i]
+
+        ||
         " " === a[i] && 
         (" " === a[i - 1] || ";" === a[i - 1] || ":" === a[i - 1] || "{" === a[i - 1] || "}" === a[i - 1]) 
 
         || 
-
         " " === a[i] && 
         (" " === a[i + 1] || ";" === a[i + 1] || ":" === a[i + 1] || "{" === a[i + 1] || "}" === a[i + 1]) 
         
