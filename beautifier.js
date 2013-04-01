@@ -80,6 +80,21 @@ var cssbeautifier = function(rawcss) {
 
 };
 
+var cssunbeautifier = function(rawcss) {
+  'use strict';
+   var s = rawcss;
+
+   s = s.replace(/\n/ig,'');
+   s = s.replace(/\s*:\s*/ig,':');
+   s = s.replace(/\s*\,\s*/ig,',');
+   s = s.replace(/\s*\{\s*/ig,'{');
+   s = s.replace(/\s*\}\s*/ig,'}');
+   s = s.replace(/\s*\;\s*/ig,';');
+
+  return( s );
+};
+
+
 //testing: unmark this and put in firebug console.
 //var rawcss = ".CodeMirror {/* Set height, width, borders, and global font properties here */font-family: \'arial\' \"aaa\" 'aaaa' monospace;height: 300px;}.CodeMirror-scroll { /* Set scrolling behaviour here */overflow: auto;}"
 //cssbeautifier(rawcss);
